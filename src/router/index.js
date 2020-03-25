@@ -13,6 +13,16 @@ HashRouter
 
 import Login from './login';
 
+import Main from './main';
+
+import NotFound from './notFound';
+
+const routes = [
+	...Login,
+	...Main,
+	...NotFound
+];
+
 const BasicRoute = () => (
     <HashRouter>
     	<Switch>
@@ -20,12 +30,7 @@ const BasicRoute = () => (
                <Redirect to="/login" />
            )}/>
     	</Switch>
-    	<Switch>
-    		<Route path='*' exact render={()=> (
-               <Redirect to="/login" />
-           )}/>
-    	</Switch>
-        <Switch>{renderRoutes(Login)}</Switch>
+        <Switch>{renderRoutes(routes)}</Switch>
     </HashRouter>
 );
 

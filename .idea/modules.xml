@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../jeecgboot-vue/.idea/jeecgboot-vue.iml" filepath="$PROJECT_DIR$/../jeecgboot-vue/.idea/jeecgboot-vue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/react-knowledge.iml" filepath="$PROJECT_DIR$/.idea/react-knowledge.iml" />
+    </modules>
+  </component>
+</project>

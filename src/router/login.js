@@ -1,4 +1,4 @@
-import LoginView from '@/view/login/login';
+import LoginView from '@/view/login/login.jsx';
 
 const login = [
 	{
