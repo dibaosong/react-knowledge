@@ -293,6 +293,7 @@ module.exports = function(webpackEnv) {
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
         "@": path.resolve("src"),
+        "@imgs": path.resolve("src/assets/imgs"),
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
@@ -333,7 +334,7 @@ module.exports = function(webpackEnv) {
           use: [
             {
               options: {
-                cache: true,
+                cache: false,
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
                 resolvePluginsRelativeTo: __dirname,
