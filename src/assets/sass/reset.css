@@ -63,7 +63,7 @@ a {
 	outline:0
 }
 a:hover {
-	text-decoration:underline
+	text-decoration:none
 }
 .f12 {
 	font-size:12px

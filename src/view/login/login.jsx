@@ -8,7 +8,6 @@ import api from '@/api/login/login';
 class Login extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 
 		};
@@ -17,10 +16,10 @@ class Login extends Component {
 	//登录
 	onFinish = (values) => {
 		api.login(values).then((res) => {
-			console.log(res);
+			localStorage.setItem('token', res.token);
+			this.props.history.push('/home');
 		})
 	}
-
 
 	render() {
 		return (
@@ -50,15 +49,14 @@ class Login extends Component {
 								placeholder="密码"
 							/>
 						</Form.Item>
-						<Form.Item>
+						<div className="ant-row ant-form-item">
 							<Form.Item name="remember" valuePropName="checked" noStyle>
 								<Checkbox>自动登录</Checkbox>
 							</Form.Item>
-
 							{/*<a className="login-form-forgot" href="">*/}
 							{/*	忘记密码*/}
 							{/*</a>*/}
-						</Form.Item>
+						</div>
 
 						<Form.Item>
 							<Button type="primary" size="large" htmlType="submit" className="w">
