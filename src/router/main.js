@@ -1,8 +1,12 @@
 import mainView from '@/view/public/main.jsx';
 
-import homeView from '@/view/home/home.jsx'; //首页
-
 import tableView from '@/view/table/table.jsx'; //table
+
+import {asyncComponent as async} from '@/utils/asyncComponent.js';
+
+const homeView = async(()=>import(/* webpackChunkName: "home" */ '@/view/home/home.jsx'));
+
+
 
 const main = [
 	{
