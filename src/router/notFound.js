@@ -2,7 +2,7 @@ import NotFoundView from '@/view/public/notFound.jsx';
 
 const notFound = [
 	{
-		path: '*',
+		path: '/404',
 		component: NotFoundView
 	}
 ];

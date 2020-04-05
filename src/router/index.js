@@ -4,6 +4,8 @@ import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { renderRoutes } from 'react-router-config';
 
+import RouterAuth from '@/utils/routerComponent';
+
 /*
 HashRouter
 1.用这个了就代表路径加上/#/
@@ -19,18 +21,20 @@ import NotFound from './notFound';
 
 const routes = [
 	...Login,
-	...Main,
 	...NotFound
 ];
 
 const BasicRoute = () => (
     <HashRouter>
-    	<Switch>
-    		<Route path='/' exact render={()=> (
-               <Redirect to="/login" />
-           )}/>
-    	</Switch>
-        <Switch>{renderRoutes(routes)}</Switch>
+    	{/*<Switch>*/}
+    	{/*	<Route path='/' exact render={()=> (*/}
+        {/*       <Redirect to="/login" />*/}
+        {/*   )}/>*/}
+    	{/*</Switch>*/}
+        {/*<Switch>{renderRoutes(routes)}</Switch>*/}
+		<Switch>
+			<RouterAuth config={routes}></RouterAuth>
+		</Switch>
     </HashRouter>
 );
 

@@ -370,6 +370,13 @@ a:hover {
 .oh {
 	overflow:hidden
 }
+.dis-flex{
+	display: flex;
+}
+.flex{
+	flex: 1;
+}
+
 ::-webkit-scrollbar-track {
     background-color: #F5F5F5;
 }

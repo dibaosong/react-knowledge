@@ -15,6 +15,8 @@ import {
     LogoutOutlined
 } from '@ant-design/icons';
 
+import MenuLeft from './menu';
+
 
 class Main extends Component {
     constructor(props) {
@@ -25,7 +27,9 @@ class Main extends Component {
             collapsed: false,
             avatar: 'https://himg.bdimg.com/sys/portrait/item/pp.1.1a3e55f2.J-hp2UWn4ZTZ4B-boxxaZQ.jpg?tt=1585406576138'
         }
+
     }
+
 
     //菜单收起展开
     toggleCollapsed = () => {
@@ -75,7 +79,14 @@ class Main extends Component {
                         </div>
                     </div>
                 </div>
-                {renderRoutes(this.state.route)}
+                <div className="body dis-flex">
+                    <div className="left">
+                        <MenuLeft></MenuLeft>
+                    </div>
+                    <div className="right flex">
+                        {renderRoutes(this.state.route)}
+                    </div>
+                </div>
             </>
         )
     }

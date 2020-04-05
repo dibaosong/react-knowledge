@@ -14,7 +14,7 @@
   }
 }
 
-//主体
+//头部
 .header{
   height: 60px;
   line-height: 60px;
@@ -60,5 +60,19 @@
     .user:hover{
       background: hsla(0,0%,100%,.3);
     }
+  }
+}
+//主体
+.body{
+  height: calc(100% - 60px);
+
+  .left{
+    width: 200px;
+    overflow-y: auto;
+  }
+
+  .right{
+    background: #f0f2f5;
+    overflow-y: auto;
   }
 }
