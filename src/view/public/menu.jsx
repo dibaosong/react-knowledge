@@ -29,7 +29,7 @@ class MenuLeft extends Component {
     componentDidMount(){
         //获取个人信息与系统菜单
         api.getMenu().then((res) => {
-            console.log(res)
+            //console.log(res)
             let menuTree = this.renderMenu(res.data.menu);
             this.setState({
                 menu: menuTree

@@ -25,7 +25,9 @@ Mock.mock(/\/api\/user\/menu(|\?\S*)$/,'get',{
             {
                 "id": 1,
                 "name": "首页",
-                "path": "/home"
+                "path": "/home",
+                "component": "view/home/home",
+                "exact": true
             },
             {
                 "id": 2,
@@ -35,7 +37,16 @@ Mock.mock(/\/api\/user\/menu(|\?\S*)$/,'get',{
                     {
                         "id": 21,
                         "name": "列表页",
-                        "path": "/tool/list"
+                        "path": "/tool/list",
+                        "component": "view/tool/list",
+                        "exact": true
+                    },
+                    {
+                        "id": 22,
+                        "name": "表单页",
+                        "path": "/tool/form",
+                        "component": "view/tool/form",
+                        "exact": true
                     }
                 ]
             }
