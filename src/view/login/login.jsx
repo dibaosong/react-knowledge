@@ -4,6 +4,12 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import api from '@/api/login/login';
+import ReactDOM from "react-dom";
+import Router from "../../router";
+
+import store from '@/store/index';
+
+import common from '@/api/common/common';
 
 class Login extends Component {
 	constructor(props) {
@@ -15,9 +21,19 @@ class Login extends Component {
 
 	//登录
 	onFinish = (values) => {
-		api.login(values).then((res) => {
-			localStorage.setItem('token', res.token);
-			this.props.history.push('/home');
+		api.login(values).then((result) => {
+			//登录成功后需要先获取下菜单，然后在跳转至主页
+			//获取个人信息与系统菜单
+			common.getMenu().then((res) => {
+				if(res.success){
+					store.dispatch({
+						type: 'USER_MENU',
+						data: res.data.menu
+					})
+					localStorage.setItem('token', result.token);
+					this.props.history.push('/home');
+				}
+			})
 		})
 	}
 
