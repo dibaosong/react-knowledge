@@ -5,31 +5,45 @@ import { Link } from "react-router-dom"
 
 import logoUrl from '@imgs/logo192.png'
 
-import { Menu, Dropdown } from 'antd';
+import { Menu, Dropdown, Modal } from 'antd';
 
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
     SettingOutlined,
     EditOutlined,
-    LogoutOutlined
+    LogoutOutlined,
+    ExclamationCircleOutlined
 } from '@ant-design/icons';
 
 import MenuLeft from './menu';
 
+import store from '@/store/index';
+
+const { confirm } = Modal;
 
 class Main extends Component {
     constructor(props) {
         super(props);
 
+        this.logoutConfirm = this.logoutConfirm.bind(this);
+
         this.state = {
             route: props.route.routes,
             collapsed: false,
-            avatar: 'https://himg.bdimg.com/sys/portrait/item/pp.1.1a3e55f2.J-hp2UWn4ZTZ4B-boxxaZQ.jpg?tt=1585406576138'
+            name: '',
+            avatar: ''
         }
 
     }
 
+    componentDidMount() {
+        let info = store.getState().user.info;
+        this.setState({
+            name: info.name,
+            avatar: info.avatar
+        })
+    }
 
     //菜单收起展开
     toggleCollapsed = () => {
@@ -37,6 +51,25 @@ class Main extends Component {
             collapsed: !this.state.collapsed
         });
     };
+
+    //确认退出登录
+    logoutConfirm() {
+        let _this = this;
+        confirm({
+            title: '确认要退出登录吗?',
+            icon: <ExclamationCircleOutlined />,
+            content: '',
+            okText: '确认',
+            cancelText: '取消',
+            onOk() {
+                localStorage.removeItem('token');
+                _this.props.history.push('/login');
+            },
+            onCancel() {
+
+            },
+        });
+    }
 
     render() {
         const menu = (
@@ -70,10 +103,10 @@ class Main extends Component {
                             <Dropdown overlay={menu} placement="bottomCenter">
                                 <div className="user fl">
                                     <img src={this.state.avatar} alt=""/>
-                                    <span>欢迎您，管理员</span>
+                                    <span>欢迎您，{this.state.name}</span>
                                 </div>
                             </Dropdown>
-                            <div className="user fl mr20">
+                            <div className="user fl mr20" onClick={this.logoutConfirm}>
                                 <LogoutOutlined /> 退出登录
                             </div>
                         </div>

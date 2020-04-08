@@ -14,6 +14,8 @@ import store from '@/store/index';
 
 import api from '@/api/common/common';
 
+import { USER_MENU, USER_INFO } from '@/store/actionType';
+
 if (process.env.NODE_ENV == 'development') {
 	//引入mock数据
 	require('./mock/index');
@@ -26,10 +28,13 @@ if(!!token){
 	api.getMenu().then((res) => {
 		if(res.success){
 			store.dispatch({
-				type: 'USER_MENU',
+				type: USER_MENU,
 				data: res.data.menu
 			})
-
+			store.dispatch({
+				type: USER_INFO,
+				data: res.data.info
+			})
 			ReactDOM.render(
 				<Router />,
 				document.getElementById('root')

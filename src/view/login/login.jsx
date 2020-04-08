@@ -11,6 +11,8 @@ import store from '@/store/index';
 
 import common from '@/api/common/common';
 
+import { USER_MENU, USER_INFO } from '@/store/actionType';
+
 class Login extends Component {
 	constructor(props) {
 		super(props);
@@ -27,8 +29,12 @@ class Login extends Component {
 			common.getMenu().then((res) => {
 				if(res.success){
 					store.dispatch({
-						type: 'USER_MENU',
+						type: USER_MENU,
 						data: res.data.menu
+					})
+					store.dispatch({
+						type: USER_INFO,
+						data: res.data.info
 					})
 					localStorage.setItem('token', result.token);
 					this.props.history.push('/home');

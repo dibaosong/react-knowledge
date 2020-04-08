@@ -1,12 +1,16 @@
+import { USER_MENU, USER_INFO } from '@/store/actionType';
+
 export default function user(state = null, action){
     switch (action.type) {
-        case 'USER_MENU':
+        case USER_MENU:
             return {
+                ...state,
                 "menu": action.data
             }
-        case 'USER_INFO':
+        case USER_INFO:
             return {
-                "data": action.data
+                ...state,
+                "info": action.data
             }
         default:
             return state

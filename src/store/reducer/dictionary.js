@@ -1,3 +1,5 @@
+import { DICTIONARY } from '@/store/actionType';
+
 export default function dictionary(state = {
     "sexType": [
         {
@@ -11,7 +13,7 @@ export default function dictionary(state = {
     ]
 }, action){
     switch (action.type) {
-        case 'DICTIONARY':
+        case DICTIONARY:
             return {
                 ...state,
                 ...action.data
