@@ -2,8 +2,6 @@ import React from 'react';
 
 import { HashRouter, Switch, Route, Redirect } from "react-router-dom";
 
-import { renderRoutes } from 'react-router-config';
-
 import RouterAuth from '@/utils/routerComponent';
 
 /*
@@ -26,12 +24,6 @@ const routes = [
 
 const BasicRoute = () => (
     <HashRouter>
-    	{/*<Switch>*/}
-    	{/*	<Route path='/' exact render={()=> (*/}
-        {/*       <Redirect to="/login" />*/}
-        {/*   )}/>*/}
-    	{/*</Switch>*/}
-        {/*<Switch>{renderRoutes(routes)}</Switch>*/}
 		<Switch>
 			<RouterAuth config={routes}></RouterAuth>
 		</Switch>

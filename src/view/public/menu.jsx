@@ -2,18 +2,10 @@ import React, { Component } from 'react';
 
 import { Menu } from 'antd';
 
-import {
-    AppstoreOutlined,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    PieChartOutlined,
-    DesktopOutlined,
-    ContainerOutlined,
-    MailOutlined,
-} from '@ant-design/icons';
-
 import api from '@/api/common/common';
 import {Link} from "react-router-dom";
+
+import store from '@/store/index';
 
 const { SubMenu } = Menu;
 
@@ -27,13 +19,10 @@ class MenuLeft extends Component {
     }
 
     componentDidMount(){
-        //获取个人信息与系统菜单
-        api.getMenu().then((res) => {
-            //console.log(res)
-            let menuTree = this.renderMenu(res.data.menu);
-            this.setState({
-                menu: menuTree
-            })
+        let menu = store.getState().user.menu;
+        let menuTree = this.renderMenu(menu);
+        this.setState({
+            menu: menuTree
         })
     }
 
@@ -45,7 +34,6 @@ class MenuLeft extends Component {
                     <SubMenu
                         key={item.id}
                         title={<span>
-                            <MailOutlined />
                             <span>{item.name}</span>
                         </span>}
                     >
@@ -55,7 +43,6 @@ class MenuLeft extends Component {
             }else{
                 return (
                     <Menu.Item key={item.id}>
-                        <PieChartOutlined />
                         <Link to={item.path}>
                             {item.name}
                         </Link>
